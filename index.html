@@ -15,7 +15,7 @@
 
     <div class="main-section">
         <div id="player">
-            <h2>Current Song</h2>
+            <h2 id="current-song">Select a song</h2>
             <audio id="audio" src=""></audio>
             <div class="progress-container">
                 <input type="range" id="progress" value="0" max="100" class="form-range">
@@ -27,7 +27,7 @@
                         <img src="icons/rewind-button.png" alt="Previous song" />
                     </button>
                     <button id="play-pause">
-                        <img src="icons/play-button-arrowhead.png" alt="Play-pause" />
+                        <img id="play-pause-icon" src="icons/play-button-arrowhead.png" alt="Play-pause" />
                     </button>
                     <button id="next">
                         <img src="icons/forward-button.png" alt="Next song" />
@@ -41,18 +41,43 @@
                     <input type="range" id="volume" value="100" max="100" class="form-range">
                 </div>
             </div>
-
-
         </div>
 
         <div class="song-list">
             <h3 class="mt-4">Playlist</h3>
             <div id="playlist" class="list-group">
-                <!-- Songs will be dynamically added here --> 
+                <div class="song-card" data-src="musics/MẸ YÊU CON.mp3" onclick="selectSong(0)">Mẹ Yêu Con</div>
+                <div class="song-card" data-src="musics/TRỐNG CƠM.mp3" onclick="selectSong(1)">Trống Cơm</div>
+                <div class="song-card" data-src="musics/Chiếc Khăn Piêu.mp3" onclick="selectSong(2)">Chiếc Khăn Piêu
+                </div>
+                <div class="song-card" data-src="musics/Đào Liễu.mp3" onclick="selectSong(3)">Đào Liễu</div>
+                <div class="song-card" data-src="musics/Mưa Trên Phố Huế.mp3" onclick="selectSong(4)">Mưa Trên Phố Huế
+                </div>
+                <div class="song-card" data-src="musics/Dạ Cổ Hoài Lang.mp3" onclick="selectSong(5)">Dạ Cổ Hoài Lang
+                </div>
+                <div class="song-card" data-src="musics/Liên Khúc Áo Mùa Đông x Trở Về.mp3" onclick="selectSong(6)">Liên
+                    Khúc Áo Mùa Đông x Trở Về</div>
+                <div class="song-card" data-src="musics/Thuận Nước Đẩy Thuyền.mp3" onclick="selectSong(7)">Thuận Nước Đẩy Thuyền
+                </div>
+                <div class="song-card" data-src="musics/Dẫu Có Lỗi Lầm.mp3" onclick="selectSong(8)">Dẫu Có Lỗi Lầm</div>
+                <div class="song-card" data-src="musics/GENE x CÓ KHÔNG GIỮ MẤT ĐỪNG TÌM.mp3" onclick="selectSong(9)">
+                    Gene x Có Không Giữ Mất Đừng Tìm</div>
+                <div class="song-card" data-src="musics/Lặng.mp3" onclick="selectSong(10)">Lặng</div>
+                <div class="song-card" data-src="musics/Thu Hoài.mp3" onclick="selectSong(11)">Thu Hoài</div>
+                <div class="song-card" data-src="musics/Là Anh Đó.mp3" onclick="selectSong(12)">Là Anh Đó</div>
             </div>
         </div>
     </div>
 
+    <div class="footer">
+        <p><strong>Disclaimer:</strong> This website is made for educational purposes only. <br> All of the music
+            belongs to their respective original authors. If you have any copyright concerns, please contact: <a
+                href="mailto:quynh190504@gmail.com">quynh190504@gmail.com</a>.</p>
+
+        <p>Icons created by Freepik - Flaticon.</p>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

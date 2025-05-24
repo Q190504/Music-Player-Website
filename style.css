@@ -32,7 +32,7 @@ body {
   margin-left: 5vh;
   margin-right: 5vh;
   height: fit-content;
-  padding: 2%;
+  padding: 3%;
   gap: 30px;
   display: flex;
   flex-direction: column;
@@ -40,7 +40,6 @@ body {
 
 #player h2 {
   margin: 0;
-  text-align: center;
   color: #000;
 }
 
@@ -81,8 +80,8 @@ body {
   border-radius: 6px;
   align-items: center;
   padding: 0;
-    display: flex;
-     justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .actions button:hover {
@@ -106,7 +105,7 @@ body {
 
 #playlist {
   margin-top: 15px;
- 
+
 }
 
 #playlist li {
@@ -123,14 +122,13 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   max-height: 70vh;
-  gap: 15px;
   margin-top: 15px;
   margin-left: 5vh;
   margin-right: 5vh;
   padding-left: 15px;
   padding-right: 15px;
   min-height: fit-content;
-  padding: 2%;
+  padding: 3%;
 }
 
 .song-list h3 {
@@ -147,6 +145,7 @@ body {
   cursor: pointer;
   transition: 0.3s;
   height: 5%;
+  margin-top: 1%;
 }
 
 .song-card:hover {
@@ -168,4 +167,13 @@ label img {
   width: 30px;
   height: 30px;
   display: flex;
+}
+
+.footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #ddd;
 }
