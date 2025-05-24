@@ -7,7 +7,12 @@ const progressBar = document.getElementById('progress');
 const volumeBar = document.getElementById('volume');
 const currentSong = document.getElementById('current-song');
 
-const playlist = [
+const moveToPlaylistBtn = document.getElementById('move-to-playist');
+const moveToAvailableBtn = document.getElementById('move-to-available');
+const availableContainer = document.getElementById('available-songs');
+const playlistContainer = document.getElementById('playlist-songs');
+
+const availableSongs = [
     'musics/Mẹ Yêu Con.mp3',
     'musics/Trống Cơm.mp3',
     'musics/Chiếc Khăn Piêu.mp3',
@@ -23,27 +28,31 @@ const playlist = [
     'musics/Là Anh Đó.mp3',
 ];
 
+const playlist = [
+
+];
+
 let currentIndex = 0;
 
 // Play
 function playSong() {
-  const songPath = playlist[currentIndex];
+    const songPath = playlist[currentIndex];
 
-  // Only change src if it's different
-  const fullUrl = new URL(songPath, location.href).href;
-  if (audio.src !== fullUrl) {
-    audio.src = songPath;
+    // Only change src if it's different
+    const fullUrl = new URL(songPath, location.href).href;
+    if (audio.src !== fullUrl) {
+        audio.src = songPath;
 
-    const fileName = songPath.split('/').pop().replace('.mp3', '');
-    currentSong.textContent = fileName;
-  }
+        const fileName = songPath.split('/').pop().replace('.mp3', '');
+        currentSong.textContent = fileName;
+    }
 
-  // Resume if paused, or play newly set src
-  audio.play().then(() => {
-    playPauseIcon.src = "icons/music-pause-button-pair-of-lines.png";
-  }).catch(err => {
-    console.error("Audio play failed:", err);
-  });
+    // Resume if paused, or play newly set src
+    audio.play().then(() => {
+        playPauseIcon.src = "icons/music-pause-button-pair-of-lines.png";
+    }).catch(err => {
+        console.error("Audio play failed:", err);
+    });
 }
 
 // Pause
@@ -71,20 +80,22 @@ document.getElementById("prev").onclick = () => {
 
 // Rewind
 rewindBtn.addEventListener('click', () => {
-  audio.currentTime = Math.max(0, audio.currentTime - 10);
+    audio.currentTime = Math.max(0, audio.currentTime - 10);
 });
 
 // Forward
 forwardBtn.addEventListener('click', () => {
-  audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
 });
 
 
 // Select song from the playlist
-function selectSong(index) {
-    if (index < 0 || index >= playlist.length || currentIndex == index) return;
-    currentIndex = index;
-    playSong();
+function selectSongByPath(path) {
+    const index = playlist.indexOf(path);
+    if (index !== -1) {
+        currentIndex = index;
+        playSong();
+    }
 }
 
 // Volume control
@@ -170,3 +181,65 @@ function resizeCanvas() {
 
 // Apply this once at start
 resizeCanvas();
+
+
+// Handle checkbox selection
+document.querySelector('.container').addEventListener('change', function (e) {
+    if (e.target.classList.contains('song-select')) {
+        const card = e.target.closest('.song-card');
+        card.classList.toggle('selected', e.target.checked);
+    }
+});
+
+// Handle clicks on the "←" button (move to playlist)
+moveToPlaylistBtn.addEventListener('click', () => {
+    const selectedSongs = availableContainer.querySelectorAll('.song-card.selected');
+    selectedSongs.forEach(card => {
+        card.classList.remove('selected'); // Remove selected highlight
+
+        const checkbox = card.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+            checkbox.checked = false; // Uncheck the checkbox
+        }
+
+        const img = card.querySelector('img');
+        if (img) {
+            img.classList.remove('hidden'); // Show the play button
+        }
+
+        // Get the song path from the data-src attribute and add to playlist
+        const songPath = card.getAttribute('data-src');
+        if (!playlist.includes(songPath)) {
+            playlist.push(songPath);
+        }
+
+        playlistContainer.appendChild(card); // Move the card
+    });
+});
+
+// Handle clicks on the "→" button (move to available)
+moveToAvailableBtn.addEventListener('click', () => {
+    const selectedSongs = playlistContainer.querySelectorAll('.song-card.selected');
+    selectedSongs.forEach(card => {
+        card.classList.remove('selected'); // Remove selected highlight
+
+        const checkbox = card.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+            checkbox.checked = false; // Uncheck the checkbox
+        }
+
+        const img = card.querySelector('img');
+        if (img) {
+            img.classList.add('hidden'); // Hide the play button
+        }
+
+        // Remove from playlist array
+        const songPath = card.getAttribute('data-src');
+        const index = playlist.indexOf(songPath);
+        if (index !== -1) {
+            playlist.splice(index, 1);
+        }
+
+        availableContainer.appendChild(card); // Move the card back to available songs
+    });
+});

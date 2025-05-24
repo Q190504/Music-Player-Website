@@ -13,7 +13,7 @@
         <h1 class="title">Music Player</h1>
     </div>
 
-    <div class="main-section">
+    <class="main-section">
         <div id="player">
             <h2 id="current-song">Select a song</h2>
             <audio id="audio" src=""></audio>
@@ -37,10 +37,10 @@
 
                 <div class="actions-buttons">
                     <button id="rewind-button">
-                        <img src="icons/rewind.png" alt="Rewind 10 seconds"/>
+                        <img src="icons/rewind.png" alt="Rewind 10 seconds" />
                     </button>
                     <button id="forward-button">
-                        <img src="icons/forward.png" alt="Forward 10 seconds"/>
+                        <img src="icons/forward.png" alt="Forward 10 seconds" />
                     </button>
                 </div>
 
@@ -53,41 +53,133 @@
             </div>
         </div>
 
-        <div class="song-list">
-            <h3 class="mt-4">Playlist</h3>
-            <div id="playlist" class="list-group">
-                <div class="song-card" data-src="musics/MẸ YÊU CON.mp3" onclick="selectSong(0)">Mẹ Yêu Con</div>
-                <div class="song-card" data-src="musics/TRỐNG CƠM.mp3" onclick="selectSong(1)">Trống Cơm</div>
-                <div class="song-card" data-src="musics/Chiếc Khăn Piêu.mp3" onclick="selectSong(2)">Chiếc Khăn Piêu
+        <div class="container">
+            <div class="panel">
+                <h3 class="mt-4">Playlist</h3>
+                <div class="song-list">
+                    <div id="playlist-songs" class="list-group">
+
+                    </div>
                 </div>
-                <div class="song-card" data-src="musics/Đào Liễu.mp3" onclick="selectSong(3)">Đào Liễu</div>
-                <div class="song-card" data-src="musics/Mưa Trên Phố Huế.mp3" onclick="selectSong(4)">Mưa Trên Phố Huế
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="move-buttons">
+                <button id="move-to-playist">←</button>
+                <button id="move-to-available">→</button>
+            </div>
+
+            <div class="panel">
+                <h3 class="mt-4">Available</h3>
+                <div class="song-list">
+                    <div id="available-songs" class="list-group">
+                        <div class="song-card" data-src="musics/MẸ YÊU CON.mp3">Mẹ Yêu Con
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))"/>
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/TRỐNG CƠM.mp3">Trống Cơm
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))" />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Chiếc Khăn Piêu.mp3">Chiếc Khăn Piêu
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))" />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Đào Liễu.mp3">Đào Liễu
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))" />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Mưa Trên Phố Huế.mp3">Mưa Trên Phố Huế
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))"  />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Dạ Cổ Hoài Lang.mp3">Dạ Cổ Hoài Lang
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))" />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Liên Khúc Áo Mùa Đông x Trở Về.mp3">Liên Khúc Áo Mùa
+                            Đông x Trở Về
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))"  />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Thuận Nước Đẩy Thuyền.mp3">Thuận Nước Đẩy Thuyền
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))"  />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Dẫu Có Lỗi Lầm.mp3">Dẫu Có Lỗi Lầm
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))" />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/GENE x CÓ KHÔNG GIỮ MẤT ĐỪNG TÌM.mp3">
+                            Gene x Có Không Giữ Mất Đừng Tìm
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))" />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Lặng.mp3">Lặng
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))"  />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Thu Hoài.mp3">Thu Hoài
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))"  />
+                            </div>
+                        </div>
+                        <div class="song-card" data-src="musics/Là Anh Đó.mp3">Là Anh Đó
+                            <div class="song-actions">
+                                <input type="checkbox" class="song-select" />
+                                <img class="hidden" src="icons/play-button-arrowhead.png" alt="Play"
+                                    onclick="selectSongByPath(this.closest('.song-card').getAttribute('data-src'))" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="song-card" data-src="musics/Dạ Cổ Hoài Lang.mp3" onclick="selectSong(5)">Dạ Cổ Hoài Lang
-                </div>
-                <div class="song-card" data-src="musics/Liên Khúc Áo Mùa Đông x Trở Về.mp3" onclick="selectSong(6)">Liên
-                    Khúc Áo Mùa Đông x Trở Về</div>
-                <div class="song-card" data-src="musics/Thuận Nước Đẩy Thuyền.mp3" onclick="selectSong(7)">Thuận Nước Đẩy Thuyền
-                </div>
-                <div class="song-card" data-src="musics/Dẫu Có Lỗi Lầm.mp3" onclick="selectSong(8)">Dẫu Có Lỗi Lầm</div>
-                <div class="song-card" data-src="musics/GENE x CÓ KHÔNG GIỮ MẤT ĐỪNG TÌM.mp3" onclick="selectSong(9)">
-                    Gene x Có Không Giữ Mất Đừng Tìm</div>
-                <div class="song-card" data-src="musics/Lặng.mp3" onclick="selectSong(10)">Lặng</div>
-                <div class="song-card" data-src="musics/Thu Hoài.mp3" onclick="selectSong(11)">Thu Hoài</div>
-                <div class="song-card" data-src="musics/Là Anh Đó.mp3" onclick="selectSong(12)">Là Anh Đó</div>
             </div>
         </div>
-    </div>
 
-    <div class="footer">
-        <p><strong>Disclaimer:</strong> This website is made for educational purposes only. <br> All of the music
-            belongs to their respective original authors. If you have any copyright concerns, please contact: <a
-                href="mailto:quynh190504@gmail.com">quynh190504@gmail.com</a>.</p>
+        <div class="footer">
+            <p><strong>Disclaimer:</strong> This website is made for educational purposes only. <br> All of the music
+                belongs to their respective original authors. If you have any copyright concerns, please contact: <a
+                    href="mailto:quynh190504@gmail.com">quynh190504@gmail.com</a>.</p>
 
-        <p>Icons created by Freepik - Flaticon.</p>
-    </div>
+            <p>Icons created by Freepik - Flaticon.</p>
+        </div>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
