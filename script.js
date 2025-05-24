@@ -1,6 +1,8 @@
 const audio = document.getElementById('audio');
 const playPauseBtn = document.getElementById('play-pause');
 const playPauseIcon = document.getElementById('play-pause-icon');
+const rewindBtn = document.getElementById('rewind-button');
+const forwardBtn = document.getElementById('forward-button');
 const progressBar = document.getElementById('progress');
 const volumeBar = document.getElementById('volume');
 const currentSong = document.getElementById('current-song');
@@ -67,6 +69,17 @@ document.getElementById("prev").onclick = () => {
     playSong();
 };
 
+// Rewind
+rewindBtn.addEventListener('click', () => {
+  audio.currentTime = Math.max(0, audio.currentTime - 10);
+});
+
+// Forward
+forwardBtn.addEventListener('click', () => {
+  audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+});
+
+
 // Select song from the playlist
 function selectSong(index) {
     if (index < 0 || index >= playlist.length || currentIndex == index) return;
@@ -129,7 +142,7 @@ function draw() {
     for (let i = 0; i < bufferLength; i++) {
         barHeight = dataArray[i];
         canvasCtx.fillStyle = `#0075ff`;
-        canvasCtx.fillRect(x, canvas.height - barHeight , barWidth, barHeight);
+        canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth + 1;
     }
 }
