@@ -150,11 +150,33 @@ body {
   height: 5%;
   margin-bottom: 1%;
   margin-right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .song-card:hover {
   border-color: #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.song-card.selected {
+  background-color: #0075ff;
+  color: white;
+  border-color: #0075ff;
+}
+
+.song-actions
+{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.song-card img {
+  width: 20px;
+  height: 20px;
 }
 
 .hidden {
